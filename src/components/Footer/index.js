@@ -1,16 +1,17 @@
 import React from 'react';
-import style from './Footer.module.css';
+import Container from '../Container';
+import s from './Footer.module.css';
 
 const Footer = () => {
     return (
-        <footer className={style.root}>
-            <div className={style.container}>
-                <div className={style.footerWrap}>
+        <footer className={s.root}>
+            <Container>
+                <div className={s.footerWrap}>
                 Coded with
-                <span className={style.heart}></span>
+                <span className={s.heart}></span>
                 by You
                 </div>
-            </div>
+            </Container>
         </footer>
     )
 }
