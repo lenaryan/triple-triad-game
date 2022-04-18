@@ -4,7 +4,7 @@ import cn from 'classnames';
 import s from './Heading.module.css';
 
 const Heading = ({ 
-    level = 1, 
+    level,
     className,
     children 
 }) => {
@@ -13,10 +13,6 @@ const Heading = ({
     return React.createElement(el, {
         className: cn(s.root, className, s[`level${level}`])
     }, children);
-}
-
-Heading.defaultProps = {
-    level: 1
 }
 
 Heading.propTypes = {

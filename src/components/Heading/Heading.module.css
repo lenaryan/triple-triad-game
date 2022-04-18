@@ -6,16 +6,6 @@
     font-weight: 600;
 }
 
-.root::after {
-    content: "";
-    display: block;
-    width: 30%;
-    position: relative;
-    border-bottom: 1px solid #aaa;
-    text-align: center;
-    margin: 15px auto 0;
-}
-
 .level1 {
     font-size: 38px;
     line-height: 1.23;

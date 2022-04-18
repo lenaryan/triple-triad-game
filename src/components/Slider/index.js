@@ -8,8 +8,8 @@ const Slider = () => {
         <section className={s.section}>
             <div className={s.slider}>
                 <Container className={s.sliderContent}>
-                    <Heading level={1}>Yo</Heading>
-                    <Heading level={2}>Wow.Wow.Wow</Heading>
+                    <Heading level={1} className={s.header}>Yo</Heading>
+                    <Heading level={2} className={s.subheader}>Wow.Wow.Wow</Heading>
                     <div className={s.call}>
                         <button className={s.button}>Wow</button>
                     </div>
