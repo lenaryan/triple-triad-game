@@ -1,11 +1,24 @@
-import style from './Heading.module.css';
+import React from 'react';
+import PropTypes from 'prop-types';
+import cn from 'classnames';
+import s from './Heading.module.css';
 
-const Heading = () => {
-    return (
-        <h1 className={style.root}>
-            Yo
-        </h1>
-    )
+const Heading = ({ 
+    level,
+    className,
+    children 
+}) => {
+    const el = `h${level}`;
+
+    return React.createElement(el, {
+        className: cn(s.root, className, s[`level${level}`])
+    }, children);
+}
+
+Heading.propTypes = {
+    level: PropTypes.oneOf([1, 2, 3, 4, 5]).isRequired,
+    className: PropTypes.string,
+    children: PropTypes.node
 }
 
 export default Heading;
