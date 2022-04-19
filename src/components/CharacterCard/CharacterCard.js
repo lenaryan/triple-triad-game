@@ -1,39 +1,71 @@
-import s from './CharacterCard.module.scss';
-import {ReactComponent as Like} from './assets/heart.svg';
-import Heading from '../Heading';
-import Text from '../Text';
+import { useState } from "react";
+import PropTypes from "prop-types";
+import cn from "classnames";
+import Heading from "../Heading";
+import Text from "../Text";
+import s from "./CharacterCard.module.scss";
+import { ReactComponent as Like } from "./assets/heart.svg";
 
-const CHARACTER = {
-    id: 1011334,
-    name: 'Spider-Man',
-    description: 'Bitten by a radioactive spider, Peter Parker’s arachnid abilities give him amazing powers he uses to help others, while his personal life continues to offer plenty of obstacles.',
-    thumbnail: {
-      path: 'https://firebasestorage.googleapis.com/v0/b/it-course-84ddd.appspot.com/o/marvel-game%2Fspider-man.png?alt=media&token=8ff4b083-81ed-449f-823c-c79110735d1b'
-    },
-    humanName: 'Peter Parker',
-    isLike: false,
+const CharacterCard = ({
+	id,
+	name,
+	src,
+	humanName,
+	description,
+	isLike,
+	onLikeClick,
+}) => {
+	const [active, setActive] = useState(false);
+
+	const handleClick = () => {
+		setActive((prevState) => !prevState);
+		onLikeClick(id);
+	};
+
+	return (
+		<div className={s.root}>
+			<img src={src} alt={name} className={s.cardImage} />
+			<div className={s.cardDetails}>
+				<Heading level={2} className={s.cardName}>
+					{name}
+				</Heading>
+				<Heading level={4} className={s.cardHumanName}>
+					{humanName}
+				</Heading>
+				<Text element="p" className={s.cardDescription}>
+					{description}
+				</Text>
+
+				<div className={s.cardMeta}>
+					<div
+						onClick={handleClick}
+						className={cn(s.like, {
+							[s.active]: isLike,
+						})}
+					>
+						<Like />
+					</div>
+					<div className={s.readBio}>
+						<a href="#">Read bio</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };
 
-const CharacterCard = () => {
-    return (
-        <div className={s.root}>
-            <img src={CHARACTER.thumbnail.path} alt={CHARACTER.name} className={s.cardImage} />
-            <div className={s.cardDetails}>
-                <Heading level={2} className={s.cardName}>{CHARACTER.name}</Heading>
-                <Heading level={4} className={s.cardHumanName}>{CHARACTER.humanName}</Heading>
-                <Text element="p" className={s.cardDescription}>{CHARACTER.description}</Text>
+CharacterCard.defaultProps = {
+	isLike: false,
+};
 
-                <div className={s.cardMeta}>
-                    <div className={s.like}>
-                        <Like />
-                    </div>
-                    <div className={s.readBio}>
-                        <a href="#">Read bio</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+CharacterCard.propTypes = {
+	id: PropTypes.number,
+	name: PropTypes.string,
+	src: PropTypes.string,
+	humanName: PropTypes.string,
+	description: PropTypes.string,
+	isLike: PropTypes.bool,
+	onLikeClick: PropTypes.func,
 };
 
 export default CharacterCard;
