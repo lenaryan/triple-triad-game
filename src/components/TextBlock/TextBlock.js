@@ -4,7 +4,7 @@ import Container from "../Container";
 import Heading from "../Heading";
 import CharacterCard from "../CharacterCard";
 
-const CHARACTER = [
+const CHARACTERS = [
 	{
 		id: 1011334,
 		name: "Spider-Man",
@@ -74,17 +74,17 @@ const CHARACTER = [
 ];
 
 const TextBlock = () => {
-	const [character, setCharacter] = useState(CHARACTER);
+	const [characters, setCharacters] = useState(CHARACTERS);
 
 	const handleLikeClick = (id) => {
-		const newCharacter = character.map((hero) => {
-			if (hero.id === id) {
-				hero.isLike = !hero.isLike;
-			}
-			return hero;
-		});
-
-		setCharacter(newCharacter);
+		setCharacters((prevState) =>
+			prevState.map((hero) => {
+				if (hero.id === id) {
+					hero.isLike = !hero.isLike;
+				}
+				return hero;
+			})
+		);
 	};
 
 	return (
@@ -95,7 +95,7 @@ const TextBlock = () => {
 					<Heading level={2}>Collect your best five</Heading>
 				</div>
 				<div className={s.cardWrap}>
-					{character.map((item) => {
+					{characters.map((item) => {
 						return (
 							<CharacterCard
 								id={item.id}
