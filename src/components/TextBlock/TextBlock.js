@@ -1,15 +1,21 @@
-import s from './TextBlock.module.css';
-import Text from '../Text';
+import s from './TextBlock.module.scss';
 import Container from '../Container';
+import Heading from '../Heading';
+import CharacterCard from '../CharacterCard';
 
 const TextBlock = () => {
     return (
         <section className={s.root}>
             <Container>
-                <Text element="div" strong>Div Strong</Text>
-                <Text element="p" italic>P Italic</Text>
-                <Text element="span" disabled>Span Disabled</Text>
-                <Text element="div" italic strong disabled>Div Italic Strong Disabled</Text>
+                <div className={s.cardTitle}>
+                    <Heading backLine>Marvel Cards</Heading>
+                    <Heading level={2}>Collect your best five</Heading>
+                </div>
+                <div className={s.cardWrap}>
+                    <CharacterCard />
+                    <CharacterCard />
+                    <CharacterCard />
+                </div>
             </Container>
         </section>
     )
