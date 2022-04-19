@@ -79,7 +79,7 @@ const TextBlock = () => {
 	const handleLikeClick = (id) => {
 		const newCharacter = character.map((hero) => {
 			if (hero.id === id) {
-				hero.isLike = true;
+				hero.isLike = !hero.isLike;
 			}
 			return hero;
 		});
