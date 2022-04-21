@@ -80,7 +80,10 @@ const TextBlock = () => {
 		setCharacters((prevState) =>
 			prevState.map((hero) => {
 				if (hero.id === id) {
-					hero.isLike = !hero.isLike;
+					return {
+						...hero,
+						isLike: !hero.isLike
+					}
 				}
 				return hero;
 			})
