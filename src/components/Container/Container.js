@@ -1,4 +1,4 @@
-import s from './Container.module.css';
+import s from './Container.module.scss';
 import cn from 'classnames';
 
 const Container = ({ children, className }) => {
