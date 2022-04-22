@@ -1,0 +1,23 @@
+$btnColor: #ffffff;
+
+.black {
+    $btnColor: #000000;
+}
+
+.root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    background-color: transparent;
+    color: $btnColor;
+    border: 1px solid currentColor;
+    padding: 8px 13px;
+    font-size: 20px;
+    transition: background 0.15s linear;
+
+    &:hover {
+        background: rgba($btnColor, 0.1);
+        cursor: pointer;
+    }
+}

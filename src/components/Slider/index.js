@@ -1,6 +1,7 @@
 import React from 'react';
 import Heading from '../Heading';
 import Container from '../Container';
+import Button from '../Button';
 import s from './Slider.module.scss';
 
 const Slider = () => {
@@ -11,7 +12,8 @@ const Slider = () => {
                     <Heading className={s.header}>Yo</Heading>
                     <Heading level={2} className={s.subheader}>Wow.Wow.Wow</Heading>
                     <div className={s.call}>
-                        <button className={s.button}>Wow</button>
+                        <Button>Wow</Button>
+                        <Button blackbtn>Go Back</Button>
                     </div>
                 </Container>
             </div>
