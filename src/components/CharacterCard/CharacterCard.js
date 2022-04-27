@@ -1,4 +1,3 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import Heading from "../Heading";
@@ -14,13 +13,15 @@ const CharacterCard = ({
 	description,
 	isLike,
 	onLikeClick,
+	onReadBioClick
 }) => {
-	const [active, setActive] = useState(false);
-
 	const handleClick = () => {
-		setActive((prevState) => !prevState);
 		onLikeClick(id);
 	};
+
+	const handleReadBioClick = () => {
+		onReadBioClick(id);
+	}
 
 	return (
 		<div className={s.root}>
@@ -46,7 +47,7 @@ const CharacterCard = ({
 						<Like />
 					</div>
 					<div className={s.readBio}>
-						<a href="#">Read bio</a>
+						<a href="#" onClick={handleReadBioClick}>Read bio</a>
 					</div>
 				</div>
 			</div>
@@ -66,6 +67,7 @@ CharacterCard.propTypes = {
 	description: PropTypes.string,
 	isLike: PropTypes.bool,
 	onLikeClick: PropTypes.func,
+	onReadBioClick: PropTypes.func
 };
 
 export default CharacterCard;
