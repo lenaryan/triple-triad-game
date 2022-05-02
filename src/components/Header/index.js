@@ -3,7 +3,7 @@ import cn from 'classnames';
 import s from './Header.module.scss';
 import logoPng from '../../assets/logo.png';
 import Container from '../Container';
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { MENU } from '../../constants/menu';
 
 const Header = () => {
@@ -18,7 +18,7 @@ const Header = () => {
 				setSmallHeader(false);
 			}
 		});
-	}, window.scrollY);
+	}, [window.scrollY]);
 
 	const handleLogoClick = () => {
 		navigate('/');
@@ -35,10 +35,15 @@ const Header = () => {
 					<img className={s.logo} src={logoPng} alt="Logo" onClick={handleLogoClick} />
 					<ul className={s.nav}>
 						{MENU.map((item, index) => (
-							<li>
-								<Link to={item.path} key={index}>
+							<li key={index}>
+								<NavLink
+									to={item.path}
+									className={({ isActive }) => {
+										return isActive ? s.active : null;
+									}}
+								>
 									{item.title}
-								</Link>
+								</NavLink>
 							</li>
 						))}
 					</ul>

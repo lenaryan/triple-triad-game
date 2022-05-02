@@ -1,19 +1,30 @@
 import Container from '../../components/Container';
 import Text from '../../components/Text';
+import Button from '../../components/Button';
 import s from './Biography.module.scss';
 import Heading from '../../components/Heading';
 import { BIO } from '../../constants/bio';
-import { useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 
 const Biography = () => {
-	const params = useParams();
+	const { id } = useParams();
+	const navigate = useNavigate();
 
-	console.log(params);
+	const handleGoBackClick = () => {
+		navigate(-1);
+	};
+
+	if (!BIO[id]) {
+		return <Navigate to={'/characters'} />;
+	}
 
 	return (
 		<section className={s.root}>
 			<Container>
-				{BIO[params.id].map((item, index) => {
+				<Button isBlack onClick={handleGoBackClick}>
+					Go Back
+				</Button>
+				{BIO[id].map((item, index) => {
 					switch (item.type) {
 						case 'paragraph':
 							return (
