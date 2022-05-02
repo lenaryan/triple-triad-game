@@ -4,7 +4,6 @@ import s from './Characters.module.scss';
 import Heading from '../../components/Heading';
 import CharacterCard from '../../components/CharacterCard';
 import { CHARACTERS } from '../../constants/characters';
-import { useNavigate } from 'react-router-dom';
 
 const Characters = () => {
 	const [characters, setCharacters] = useState(CHARACTERS);

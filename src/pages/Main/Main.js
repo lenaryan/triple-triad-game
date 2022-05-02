@@ -8,7 +8,6 @@ import s from './Main.module.scss';
 
 const Main = () => {
 	const [characters, setCharacters] = useState(CHARACTERS);
-	const [chosenId, setChosenId] = useState(null);
 
 	const handleLikeClick = (id) => {
 		setCharacters((prevState) =>
@@ -22,10 +21,6 @@ const Main = () => {
 				return hero;
 			})
 		);
-	};
-
-	const handleReadBioClick = (id) => {
-		setChosenId(id);
 	};
 
 	return (
@@ -49,7 +44,6 @@ const Main = () => {
 									key={item.id}
 									isLike={item.isLike}
 									onLikeClick={handleLikeClick}
-									onReadBioClick={handleReadBioClick}
 								/>
 							);
 						})}

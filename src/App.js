@@ -4,7 +4,6 @@ import Biography from './pages/Biography';
 import Layout from './components/Layout';
 import About from './pages/About';
 import Contacts from './pages/Contacts';
-import CharactersWrap from './components/CharactersWrap';
 import Characters from './pages/Characters';
 
 function App() {
@@ -12,10 +11,8 @@ function App() {
 		<Routes>
 			<Route path="/" element={<Layout />}>
 				<Route index element={<Main />} />
-				<Route path="characters" element={<CharactersWrap />}>
-					<Route index element={<Characters />} />
-					<Route path=":id" element={<Biography />} />
-				</Route>
+				<Route path="characters" element={<Characters />} />
+				<Route path="characters/:id" element={<Biography />} />
 				<Route path="contacts" element={<Contacts />} />
 				<Route path="about" element={<About />} />
 			</Route>
