@@ -11,17 +11,19 @@ function App() {
 	let { pathname, hash } = useLocation();
 
 	useEffect(() => {
-		if (hash) {
-			document.querySelector(`${hash}`).scrollIntoView({
-				block: 'center',
-				behavior: 'smooth',
-			});
-		} else {
-			window.scrollTo({
-				top: 0,
-				behavior: 'smooth',
-			});
-		}
+		document.addEventListener('load', () => {
+			if (hash) {
+				document.querySelector(`${hash}`).scrollIntoView({
+					block: 'center',
+					behavior: 'smooth',
+				});
+			} else {
+				window.scrollTo({
+					top: 0,
+					behavior: 'smooth',
+				});
+			}
+		});
 	}, [pathname, hash]);
 
 	return (
