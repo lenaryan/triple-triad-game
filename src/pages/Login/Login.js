@@ -4,28 +4,26 @@ import { ReactComponent as Pen } from '../../assets/pen.svg';
 import Container from '../../components/Container';
 import Button from '../../components/Button';
 import s from './Login.module.scss';
+import Input from '../../components/Input/Input';
+import { useState } from 'react';
 
 const Login = () => {
-	// + сделать компонент Input
-	// + сделать вложенность в стилях
-	// + использовать рефы для онкликов
 	// + вывести данные формы в консоль при логине
 	// + вывести данные формы в консоль при регистрации
 	// + проверить пароль и повтор пароля, чтобы были одинаковые
 
-	// const toggleEl = document.querySelector('.toggle');
-	// const closeEl = document.querySelector('.close');
-	// const containerEl = document.querySelector('.container');
+	const [toggleActive, setToggleActive] = useState(false);
+	const [containerActive, setContainerActive] = useState(false);
 
-	// toggleEl.addEventListener('click', () => {
-	// 	toggleEl.classList.add('active');
-	// 	containerEl.classList.add('active');
-	// });
+	const handleToggleClick = () => {
+		setToggleActive(true);
+		setContainerActive(true);
+	};
 
-	// closeEl.addEventListener('click', () => {
-	// 	toggleEl.classList.remove('active');
-	// 	containerEl.classList.remove('active');
-	// });
+	const handleCloseClick = () => {
+		setToggleActive(false);
+		setContainerActive(false);
+	};
 
 	return (
 		<>
@@ -33,50 +31,46 @@ const Login = () => {
 				<img src={logoLogin} alt="Logo" />
 			</section>
 			<section>
-				<Container className={s.container}>
+				<Container
+					className={cn(s.container, {
+						[s.active]: containerActive,
+					})}
+				>
 					<div className={s.card}></div>
 					<div className={s.card}>
 						<h1 className={s.title}>Login</h1>
 						<form>
-							<div className={s.inputContainer}>
-								<input type="email" id="#email" required="required" />
-								<label for="#email">Email</label>
-								<div className={s.bar}></div>
-							</div>
-							<div className={s.inputContainer}>
-								<input type="password" id="#password" required="required" />
-								<label for="#password">Password</label>
-								<div className={s.bar}></div>
-							</div>
+							<Input className={s.input} id="email" type="email" required label="Email" />
+							<Input className={s.input} id="password" type="password" required label="Password" />
 							<div className={s.buttonContainer}>
 								<Button isPink>Go</Button>
 							</div>
 						</form>
 					</div>
 					<div className={cn(s.card, s.alt)}>
-						<div className={s.toggle}>
+						<div
+							className={cn(s.toggle, {
+								[s.active]: toggleActive,
+							})}
+							onClick={handleToggleClick}
+						>
 							<Pen />
 						</div>
 						<h1 className={s.title}>
 							Register
-							<div className={s.close}></div>
+							<div className={s.close} onClick={handleCloseClick}></div>
 						</h1>
 						<form>
-							<div className={s.inputContainer}>
-								<input type="email" id="#signup-email" required="required" />
-								<label for="#signup-email">Email</label>
-								<div className={s.bar}></div>
-							</div>
-							<div className={s.inputContainer}>
-								<input type="password" id="#signup-password" required="required" />
-								<label for="#signup-password">Password</label>
-								<div className={s.bar}></div>
-							</div>
-							<div className={s.inputContainer}>
-								<input type="password" id="#signup-repeat-password" required="required" />
-								<label for="#signup-repeat-password">Repeat Password</label>
-								<div className={s.bar}></div>
-							</div>
+							<Input className={s.input} altInput id="signup-email" type="email" required label="Email" />
+							<Input className={s.input} altInput id="signup-password" type="password" required label="Password" />
+							<Input
+								className={s.input}
+								altInput
+								id="signup-repeat-password"
+								type="password"
+								required
+								label="Repeat Password"
+							/>
 							<div className={s.buttonContainer}>
 								<Button isPink isPinkAlt>
 									Register
