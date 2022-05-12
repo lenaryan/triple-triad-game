@@ -4,7 +4,7 @@ import s from './Button.module.scss';
 
 const Button = ({ isBlack = false, isPink = false, isPinkAlt = false, className, children, onClick }) => {
 	const handleClick = () => {
-		onClick();
+		onClick && onClick();
 	};
 
 	return (

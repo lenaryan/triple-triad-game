@@ -8,12 +8,49 @@ import Input from '../../components/Input/Input';
 import { useState } from 'react';
 
 const Login = () => {
-	// + вывести данные формы в консоль при логине
-	// + вывести данные формы в консоль при регистрации
 	// + проверить пароль и повтор пароля, чтобы были одинаковые
+
+	const [loginForm, setLoginForm] = useState({
+		email: '',
+		password: '',
+	});
+
+	const [registerForm, setRegisterForm] = useState({
+		regemail: '',
+		regpassword: '',
+		regrepeat: '',
+	});
 
 	const [toggleActive, setToggleActive] = useState(false);
 	const [containerActive, setContainerActive] = useState(false);
+
+	const handleLoginChange = (e) => {
+		setLoginForm((prevState) => ({
+			...prevState,
+			[e.target.name]: e.target.value,
+		}));
+	};
+
+	const handleLoginSubmit = (e) => {
+		e.preventDefault();
+		console.log('login form', loginForm);
+	};
+
+	const handleRegisterChange = (e) => {
+		setRegisterForm((prevState) => ({
+			...prevState,
+			[e.target.name]: e.target.value,
+		}));
+	};
+
+	const handleRegisterSubmit = (e) => {
+		e.preventDefault();
+		if (registerForm.regpassword !== registerForm.regrepeat) {
+			console.log("passwords don't match, you lil shit!");
+		} else {
+			console.log('register form', registerForm);
+		}
+	};
 
 	const handleToggleClick = () => {
 		setToggleActive(true);
@@ -39,9 +76,25 @@ const Login = () => {
 					<div className={s.card}></div>
 					<div className={s.card}>
 						<h1 className={s.title}>Login</h1>
-						<form>
-							<Input className={s.input} id="email" type="email" required label="Email" />
-							<Input className={s.input} id="password" type="password" required label="Password" />
+						<form onChange={handleLoginChange} onSubmit={handleLoginSubmit}>
+							<Input
+								className={s.input}
+								id="email"
+								type="email"
+								name="email"
+								required
+								label="Email"
+								value={loginForm.email}
+							/>
+							<Input
+								className={s.input}
+								id="password"
+								type="password"
+								name="password"
+								required
+								label="Password"
+								value={loginForm.password}
+							/>
 							<div className={s.buttonContainer}>
 								<Button isPink>Go</Button>
 							</div>
@@ -60,16 +113,36 @@ const Login = () => {
 							Register
 							<div className={s.close} onClick={handleCloseClick}></div>
 						</h1>
-						<form>
-							<Input className={s.input} altInput id="signup-email" type="email" required label="Email" />
-							<Input className={s.input} altInput id="signup-password" type="password" required label="Password" />
+						<form onChange={handleRegisterChange} onSubmit={handleRegisterSubmit}>
+							<Input
+								className={s.input}
+								altInput
+								id="signup-email"
+								type="email"
+								name="regemail"
+								required
+								label="Email"
+								value={registerForm.email}
+							/>
+							<Input
+								className={s.input}
+								altInput
+								id="signup-password"
+								type="password"
+								name="regpassword"
+								required
+								label="Password"
+								value={registerForm.password}
+							/>
 							<Input
 								className={s.input}
 								altInput
 								id="signup-repeat-password"
 								type="password"
+								name="regrepeat"
 								required
 								label="Repeat Password"
+								value={registerForm.repeat}
 							/>
 							<div className={s.buttonContainer}>
 								<Button isPink isPinkAlt>
