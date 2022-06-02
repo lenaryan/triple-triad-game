@@ -16,7 +16,7 @@ const Button = ({ isBlack = false, isPink = false, isPinkAlt = false, className,
 			})}
 			onClick={handleClick}
 		>
-			{isPink ? <span>{children}</span> : { children }}
+			{isPink ? <span>{children}</span> : children}
 		</button>
 	);
 };
