@@ -14,7 +14,7 @@ function App() {
 	useEffect(() => {
 		document.addEventListener('load', () => {
 			if (hash) {
-				document.querySelector(`${hash}`).scrollIntoView({
+				document.querySelector(hash).scrollIntoView({
 					block: 'center',
 					behavior: 'smooth',
 				});

@@ -8,8 +8,6 @@ import Input from '../../components/Input/Input';
 import { useState } from 'react';
 
 const Login = () => {
-	// + проверить пароль и повтор пароля, чтобы были одинаковые
-
 	const [loginForm, setLoginForm] = useState({
 		email: '',
 		password: '',
@@ -33,7 +31,6 @@ const Login = () => {
 
 	const handleLoginSubmit = (e) => {
 		e.preventDefault();
-		console.log('login form', loginForm);
 	};
 
 	const handleRegisterChange = (e) => {
